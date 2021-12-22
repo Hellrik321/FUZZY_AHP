@@ -25,6 +25,8 @@ from sklearn.metrics import f1_score, precision_score
 from sklearn.cluster import KMeans
 from sklearn.dummy import DummyClassifier
 
+#linhas com os parametros micro 114 e 115
+
 # Importação do banco de dados
 dados = pd.read_csv(r"D:/Users/phlo3/Documents/Unifesspa/Projeto de Pesquisa/Algoritmo_TCC-master/Algoritmo_TCC-master/Banco1.csv")
 
@@ -37,7 +39,7 @@ scaler = StandardScaler()
 previsores = scaler.fit_transform(previsores)
 
 # Clusterização
-cluster = KMeans(n_clusters=3, random_state=0)
+cluster = KMeans(n_clusters=3, random_state=0) #remover clusters
 model = cluster.fit(previsores)
 classes = model.labels_
 
@@ -109,7 +111,7 @@ for m in metodos:
             # Análise dos resultados
             acuracia = accuracy_score(classes[indice_teste], previsoes)*100
             
-            f1_parcial = f1_score(classes[indice_teste], previsoes, average='micro')*100
+            f1_parcial = f1_score(classes[indice_teste], previsoes, average='micro')*100 #averages que executaram sem erros: micro e macro
             precisao_parcial = precision_score(classes[indice_teste], previsoes, average='micro')*100
             
             
